@@ -20,10 +20,13 @@ app.use(express.static(path.join(__dirname, 'build')));
 // Check if token and create req.user
 app.use(require('./config/checkToken'));
 
+// Protect from anonymous users
+const ensureLoggedIn = require('./config/ensureLoggedIn');
+
 // Put API routes here, before the "catch all" route
 app.use('/api/users', require('./routes/api/users'));
 app.use('/api/trees', require('./routes/api/trees'));
-app.use('/api/orders', require('./routes/api/orders'));
+app.use('/api/orders', ensureLoggedIn, require('./routes/api/orders'));
 
 // The following "catch all" route (note the *) is necessary
 // to return the index.html on all non-AJAX requests

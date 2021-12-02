@@ -1,0 +1,9 @@
+.side-nav {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: var(--olive);
+    width: 20%;
+    padding: 5vmin 1vmin;
+    border: .3vmin solid var(--green);
+}
