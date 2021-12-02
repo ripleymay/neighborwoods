@@ -1,0 +1,12 @@
+p.error-message {
+    color: var(--darkred);
+    text-align: center;
+}
+  
+.form-container {
+    padding: 3vmin;
+    background-color: var(--olive);
+    border: .1vmin solid var(--darkolive);
+    border-radius: 1vmin;
+}
+  
