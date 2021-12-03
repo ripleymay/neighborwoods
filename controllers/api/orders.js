@@ -7,7 +7,7 @@ const GEOCODE_URL = `https://maps.googleapis.com/maps/api/geocode/json?key=${pro
 module.exports = {
     index,
     getAll,
-    new: newOrder,
+    create,
     getAddress,
     getLatLng
 };
@@ -21,29 +21,18 @@ function getAll(req, res) {
     pass;
 }
 
-async function newOrder(req, res) {
-
+async function create(req, res) {
+    pass;
 }
 
 async function getAddress(req, res) {
-    try{
-        const url = `${PLACES_URL}&input=${req.query.search}`;
-        console.log(url);
-        const results = await fetch(url).then((res) => res.json());
-        res.json(results);
-    } catch(e) {
-        console.log(e);
-        res.json('Error occurred accessing Google Places API');
-    }
+    const url = `${PLACES_URL}&input=${req.query.search}`;
+    const results = await fetch(url).then((res) => res.json());
+    res.json(results);
 }
 
 async function getLatLng(req, res) {
-    try{
-        const url = `${GEOCODE_URL}/&address=${req.query.search}`;
-        const results = await fetch(url).then((res) => res.json());
-        res.json(results);
-    } catch(e) {
-        console.log(e);
-        res.json('Error occurred accessing Google Geocoding API');
-    }
+    const url = `${GEOCODE_URL}&address=${req.query.search}`;
+    const results = await fetch(url).then((res) => res.json());
+    res.json(results);
 }
