@@ -1,16 +1,17 @@
 import React, { useState, useEffect } from 'react';
+import OrderAddyForm from '../../components/OrderAddyForm/OrderAddyForm';
 import * as ordersAPI from '../../utilities/orders-api';
 import './NewOrderPage.css';
 
 export default function NewOrderPage({ user }) {
 
-    const [formData, setFormData] = useState({});
+    const [address, setAddress] = useState('');
+    const [isAddyValid, setIsAddyValid] = useState(false);
 
     return (
         <main className="NewOrderPage">
-            <form>
-                <input></input>
-            </form>
+            < OrderAddyForm />
         </main>
     );
 }
+

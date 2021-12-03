@@ -18,16 +18,12 @@ export default function AvailTreesPage() {
 
     return (
         <main className="AvailTreesPage">
-            {trees.length ? 
+            <div>
+                <h1>Available trees</h1>
                 <div>
-                    <h1>Available trees</h1>
-                    <div>
-                        {trees.map(t => <TreeCard tree={t}/>)}
-                    </div>
+                    {trees.map(t => <TreeCard tree={t} />)}
                 </div>
-                : 
-                <h1>No trees are available at this time.</h1>
-            }
+            </div>
         </main>
     );
 }

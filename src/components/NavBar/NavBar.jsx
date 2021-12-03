@@ -13,8 +13,8 @@ export default function NavBar(props) {
   return (
     <aside className="side-nav">
       <h3>Welcome, {props.user.name}</h3>
-      <Link to="">New Order</Link>
       <Link to="orders">All Orders</Link>
+      <Link to="orders/new">New Order</Link>
       <Link to="trees/available">See Available Trees</Link>
       <Link to="">Settings</Link>
       <Link to="" onClick={handleLogOut}>Log Out</Link>

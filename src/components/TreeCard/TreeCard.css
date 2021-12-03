@@ -1,0 +1,8 @@
+.TreeCard {
+    padding: 1vmin;
+    border: .3vmin solid var(--darkgreen);
+}
+
+.italic {
+    font-style: italic;
+}
