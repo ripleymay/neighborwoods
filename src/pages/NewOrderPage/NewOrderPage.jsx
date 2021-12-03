@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import OrderAddyForm from '../../components/OrderAddyForm/OrderAddyForm';
+import GoogleMapWidget from '../../components/GoogleMapWidget/GoogleMapWidget';
 import * as ordersAPI from '../../utilities/orders-api';
 import './NewOrderPage.css';
 
@@ -11,6 +12,7 @@ export default function NewOrderPage({ user }) {
     return (
         <main className="NewOrderPage">
             < OrderAddyForm />
+            < GoogleMapWidget />
         </main>
     );
 }
