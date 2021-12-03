@@ -5,3 +5,7 @@ const BASE_URL = '/api/orders';
 export function getOrders() {
   return sendRequest(`${BASE_URL}/`);
 }
+
+export async function getAddyRecs(address) {
+    return sendRequest(`${BASE_URL}/new/address?search=${address}`);
+}

@@ -23,10 +23,13 @@ const orderSchema = new Schema({
         type: String,
         required: true
     },
-    zip: {
+    lat: {
         type: String,
         required: true,
-        match: /[0-9]{5}/
+    },
+    lng: {
+        type: String,
+        required: true,
     },
     trees: [{type: Schema.Types.ObjectId, ref: 'Tree'}]
 }, {  
