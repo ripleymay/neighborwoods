@@ -8,7 +8,7 @@ export default function NewOrderPage({ user }) {
     const [addy, setAddy] = useState('');
     const [addyMatches, setAddyMatches] = useState([]);
     const [isAddyValid, setIsAddyValid] = useState(false);
-    const [latLng, setLatLng] = useState({
+    const [coords, setCoords] = useState({
         lat: null,
         lng: null
     });
@@ -28,7 +28,7 @@ export default function NewOrderPage({ user }) {
         handleChange(evt);        
         setIsAddyValid(true);
         const results = await ordersAPI.getLatLng(addy);
-        setLatLng({
+        setCoords({
             lat: results.results[0].geometry.location.lat, 
             lng: results.results[0].geometry.location.lng
         });
@@ -44,10 +44,8 @@ export default function NewOrderPage({ user }) {
                         <button type="submit" value="submit">🔎</button>
                     </form>
                     {addyMatches.length ? <div>
-                        {addyMatches.map((a) => (
-                            <div>
-                                <button onClick={handleSelect} value={a.description}>{a.description}</button>
-                            </div>
+                        {addyMatches.map((a, idx) => (
+                            <button key={idx} onClick={handleSelect} value={a.description}>{a.description}</button>
                         ))}
                     </div> :
                         <p>No matching addresses</p>}
@@ -55,8 +53,8 @@ export default function NewOrderPage({ user }) {
             :
             <div>
                 <p>Order Address: {addy}</p>
-                <p>Lat: {latLng.lat} Long: {latLng.lng}</p>
-                < GoogleMapWidget latLng={latLng}/>
+                <p>Lat: {coords.lat} Long: {coords.lng}</p>
+                < GoogleMapWidget coords={coords}/>
             </div>
             }
         </main>
