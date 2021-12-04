@@ -1,12 +1,12 @@
 import React, {useEffect} from 'react'
 import './GoogleMapWidget.css'
 
-export default function Map() {
+export default function Map({latLng}) {
 
   useEffect(function() {
     new window.google.maps.Map(document.getElementById("map"), {
-      center: { lat: 30.267, lng: -97.743 },
-      zoom: 12,
+      center: { lat: latLng.lat, lng: latLng.lng },
+      zoom: 18,
       // mapTypeId: 'satellite',
     });
   }, []);

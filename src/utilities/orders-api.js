@@ -6,6 +6,10 @@ export function getOrders() {
   return sendRequest(`${BASE_URL}/`);
 }
 
-export async function getAddyRecs(address) {
-    return sendRequest(`${BASE_URL}/new/address?search=${address}`);
+export async function getMatchingAddys(addy) {
+    return sendRequest(`${BASE_URL}/new/address?address=${addy}`);
+}
+
+export async function getLatLng(addy) {
+    return sendRequest(`${BASE_URL}/new/latlng?address=${addy}`);
 }
