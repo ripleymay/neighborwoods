@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import GoogleMapWidget from '../../components/GoogleMapWidget/GoogleMapWidget';
+import TreeButton from '../../components/TreeButton/TreeButton';
 import * as ordersAPI from '../../utilities/orders-api';
 import * as treesAPI from '../../utilities/trees-api';
 import './NewOrderPage.css';
@@ -37,10 +38,33 @@ export default function NewOrderPage({ user }) {
         });
     }
 
+    function handleAdd(tree) {
+        setTrees([...trees, tree]);
+    }
+
+    function handleSub(tree) {
+        const index = trees.findIndex(t => t.name === tree.name);
+        trees.splice(index, 1);
+        setTrees(trees);
+    }
+
+    async function handleFinalize() {
+        const newOrder = await ordersAPI.createOrder({
+            addy,
+            coords,
+            trees
+        });
+    }
+
     useEffect(function() {
         async function getTrees() {
           const trees = await treesAPI.getAvail();
-          treesRef.current = trees;
+          const sortedTrees = trees.reduce((res, t) => {
+              res[t.stature] = res[t.stature] || [];
+              res[t.stature].push(t);
+              return res;
+          }, {});
+          treesRef.current = sortedTrees;
         }
         getTrees();
       }, []);
@@ -65,7 +89,21 @@ export default function NewOrderPage({ user }) {
             <div>
                 <p>Order Address: {addy}</p>
                 <p>Lat: {coords.lat} Long: {coords.lng}</p>
-                < GoogleMapWidget coords={coords}/>
+                <div className="select-div">
+                    < GoogleMapWidget coords={coords}/>
+                    <div className="tree-select">
+                        <h3>Large trees: </h3>
+                        {treesRef.current.Large.map(t =>
+                            <TreeButton tree={t} handleAdd={handleAdd} handleSub={handleSub} />)}
+                        <h3>Medium trees: </h3>
+                        {treesRef.current.Medium.map(t =>
+                            <TreeButton tree={t} handleAdd={handleAdd} handleSub={handleSub} />)}
+                        <h3>Small trees: </h3>
+                        {treesRef.current.Small.map(t =>
+                            <TreeButton tree={t} handleAdd={handleAdd} handleSub={handleSub} />)}
+                        <button onClick={handleFinalize}>Submit order</button>
+                    </div>
+                </div>
             </div>
             }
         </main>

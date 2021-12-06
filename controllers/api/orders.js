@@ -22,7 +22,14 @@ function getAll(req, res) {
 }
 
 async function create(req, res) {
-    pass;
+    const order = new Order();
+    order.user = req.user._id;
+    order.address = req.body.addy;
+    order.lat = req.body.coords.lat;
+    order.lng = req.body.coords.lng;
+    order.trees = req.body.trees.map(t => t._id);
+    await order.save();
+    res.json(order);
 }
 
 async function getMatchingAddys(req, res) {

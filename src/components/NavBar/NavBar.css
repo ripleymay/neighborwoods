@@ -9,16 +9,20 @@
     color: var(--darkgreen);
 }
 
+.side-nav > h3 {
+    font-size: 2.5vmin;
+}
+
 .username {
     color: var(--darkred);
-    font-size: larger;
+    font-size: 3vmin;
 }
 
 .side-nav > a {
     color: var(--darkgrey);
     text-decoration: none;
     text-align: left;
-    font-size: 2.5vmin;
+    font-size: 2vmin;
 }
 
 .side-nav > a:hover {

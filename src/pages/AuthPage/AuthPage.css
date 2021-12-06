@@ -22,3 +22,28 @@ p.error-message {
     background-color: var(--lightgrey);
     border: .3vmin solid var(--green);
 }
+
+.auth-btn {
+    margin: 1vmin;
+    padding: 1vmin;
+    color: var(--white);
+    background-color: var(--green);
+    font-size: 2vmin;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    border: .1vmin solid var(--darkgreen);
+    border-radius: .5vmin;
+    outline: none;
+    cursor: pointer;
+}
+  
+.auth-btn:disabled, form:invalid button[type="submit"] {
+    cursor: not-allowed;
+    background-color: var(--grey);
+}
+  
+.auth-btn.submit {
+    grid-column: span 2;
+    margin: 1vmin 0 0;
+}

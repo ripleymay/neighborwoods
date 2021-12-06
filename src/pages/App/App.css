@@ -37,31 +37,6 @@ input:focus {
   border-color: var(--darkgrey);
 }
 
-button, a.button {
-  margin: 1vmin;
-  padding: 1vmin;
-  color: var(--white);
-  background-color: var(--green);
-  font-size: 2vmin;
-  font-weight: bold;
-  text-decoration: none;
-  text-align: center;
-  border: .1vmin solid var(--darkgreen);
-  border-radius: .5vmin;
-  outline: none;
-  cursor: pointer;
-}
-
-button:disabled, form:invalid button[type="submit"] {
-  cursor: not-allowed;
-  background-color: var(--grey);
-}
-
-button[type="submit"] {
-  grid-column: span 2;
-  margin: 1vmin 0 0;
-}
-
 .tree-liner {
   background-image: url("https://2e1boh22u0fy41r7582thz8g-wpengine.netdna-ssl.com/wp-content/uploads/2020/08/footer-new-01.png");
   background-repeat: repeat no-repeat; 

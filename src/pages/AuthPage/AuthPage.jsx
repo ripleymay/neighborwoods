@@ -12,7 +12,7 @@ export default function AuthPage({ setUser }) {
         <div className="auth-forms">
           <div className="auth-toggle">
             <p>{showSignUp ? 'Already a user?' : 'Need to create an account?'}</p>
-            <button onClick={() => setShowSignUp(!showSignUp)}>{showSignUp ? 'Log In' : 'Sign Up'}</button>
+            <button className="auth-btn" onClick={() => setShowSignUp(!showSignUp)}>{showSignUp ? 'Log In' : 'Sign Up'}</button>
           </div>
           { showSignUp ?
             <SignUpForm setUser={setUser} />

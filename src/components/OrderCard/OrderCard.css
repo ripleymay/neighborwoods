@@ -1,0 +1,6 @@
+.OrderCard {
+    padding: 1vmin;
+    border: .5vmin solid var(--darkgreen);
+    background-color: var(--lightgrey);
+    margin: 1%;
+}
