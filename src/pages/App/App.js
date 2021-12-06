@@ -6,6 +6,7 @@ import AuthPage from '../AuthPage/AuthPage';
 import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
 import AvailTreesPage from '../AvailTreesPage/AvailTreesPage';
 import NewOrderPage from '../NewOrderPage/NewOrderPage';
+import SettingsPage from '../SettingsPage/SettingsPage';
 import NavBar from '../../components/NavBar/NavBar';
 
 export default function App() {
@@ -20,6 +21,7 @@ export default function App() {
             <Route path="/orders" element={< OrderHistoryPage user={user}/>} />
             <Route path="/orders/new" element={< NewOrderPage user={user}/>} />
             <Route path="/trees/available" element={< AvailTreesPage />} />
+            <Route path="/settings" element={< SettingsPage user={user} setUser={setUser}/>} />
             <Route path="/*" element={<Navigate to="/orders" />} />
           </Routes>
         </div>

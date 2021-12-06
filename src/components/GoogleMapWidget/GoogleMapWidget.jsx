@@ -10,7 +10,7 @@ export default function Map({coords}) {
       zoom: 20,
       mapTypeId: 'satellite',
     });
-    let marker = new window.google.maps.Marker({
+    new window.google.maps.Marker({
       position: target,
       animation: window.google.maps.Animation.DROP,
       map: map,

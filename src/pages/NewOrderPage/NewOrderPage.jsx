@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import GoogleMapWidget from '../../components/GoogleMapWidget/GoogleMapWidget';
 import TreeButton from '../../components/TreeButton/TreeButton';
 import * as ordersAPI from '../../utilities/orders-api';
@@ -16,6 +17,7 @@ export default function NewOrderPage({ user }) {
     });
     const [trees, setTrees] = useState([]);
     const treesRef = useRef();
+    const navigate = useNavigate();
 
     function handleChange(evt) {
         const newAddy = evt.target.value;
@@ -43,17 +45,17 @@ export default function NewOrderPage({ user }) {
     }
 
     function handleSub(tree) {
-        const index = trees.findIndex(t => t.name === tree.name);
-        trees.splice(index, 1);
+        trees.splice(trees.findIndex(t => t.name === tree.name), 1);
         setTrees(trees);
     }
 
     async function handleFinalize() {
-        const newOrder = await ordersAPI.createOrder({
+        await ordersAPI.createOrder({
             addy,
             coords,
             trees
         });
+        navigate('/orders');
     }
 
     useEffect(function() {

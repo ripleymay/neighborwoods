@@ -16,7 +16,7 @@ export default function NavBar(props) {
       <Link to="orders">📂 My Orders</Link>
       <Link to="orders/new">📥 New Order</Link>
       <Link to="trees/available">🌳 Available Trees</Link>
-      <Link to="">⚙️ Settings</Link>
+      <Link to="settings">⚙️ Settings</Link>
       <Link to="" onClick={handleLogOut}>↩️ Log Out</Link>
     </aside>
   );

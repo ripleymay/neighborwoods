@@ -5,7 +5,8 @@ const bcrypt = require('bcrypt');
 module.exports = {
   create,
   login,
-  checkToken
+  checkToken,
+  update
 };
 
 function checkToken(req, res) {
@@ -39,6 +40,10 @@ async function create(req, res) {
   }
 }
 
+async function update(req, res) {
+  const user = await User.findByIdAndUpdate(req.params.id, req.body, {new: true});
+  res.json(user);
+}
 
 /*-- Helper Functions --*/
 

@@ -134,6 +134,10 @@ const rippy = User.findOne({});
     {name: "Yaupon Holly", species: "Ilex vomitoria", stature: "Small", description: "Slow-growing, thicket-forming, single- or multi-trunked, pale gray bark with white patches. Small, dark green, hollylike leaves, usually shorter than 1 1/2 inches. Small, round, shiny, bright red berries on females. Shade tolerant.", isAvailable:true},
   ]);
 
+  await User.create([
+    {name: 'Admin', isAdmin: true, email: 'neighborwoods@treefolks.org', phone: '512-443-5323', password: 'Tr33folk$'}
+  ]);
+
   process.exit();
 
 })();
