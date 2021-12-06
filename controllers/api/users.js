@@ -5,14 +5,9 @@ const bcrypt = require('bcrypt');
 module.exports = {
   create,
   login,
-  checkToken,
-  update
+  update,
+  checkToken
 };
-
-function checkToken(req, res) {
-  console.log('req.user', req.user);
-  res.json(req.exp);
-}
 
 async function login(req, res) {
   try {
@@ -31,9 +26,7 @@ async function create(req, res) {
     const user = await User.create(req.body);
     // token will be a string
     const token = createJWT(user);
-    // send back the token as a string
-    // which we need to account for 
-    // in the client
+    // send back the token as a string which we need to account for in the client
     res.json(token);
   } catch (e) {
     res.status(400).json(e);
@@ -43,6 +36,11 @@ async function create(req, res) {
 async function update(req, res) {
   const user = await User.findByIdAndUpdate(req.params.id, req.body, {new: true});
   res.json(user);
+}
+
+function checkToken(req, res) {
+  console.log('req.user', req.user);
+  res.json(req.exp);
 }
 
 /*-- Helper Functions --*/

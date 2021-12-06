@@ -1,11 +1,8 @@
 require('dotenv').config();
 require('./config/database');
 
-const Order = require('./models/order');
 const Tree = require('./models/tree');
 const User = require('./models/user');
-
-const rippy = User.findOne({});
 
 // IIFE - Immediately Invoked Function Expression
 (async function() {

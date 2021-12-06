@@ -2,16 +2,15 @@ const Tree = require('../../models/tree');
 
 module.exports = {
     index,
-    getAvailable
+    all
 };
 
-// need to protect this for just admin
 async function index(req, res) {
-    const trees = await Tree.find({});
+    const trees = await Tree.find({isAvailable: true}).sort('stature').exec();
     res.json(trees);
 }
 
-async function getAvailable(req, res) {
-    const trees = await Tree.find({isAvailable: true}).sort('stature').exec();
+async function all(req, res) {
+    const trees = await Tree.find({});
     res.json(trees);
 }

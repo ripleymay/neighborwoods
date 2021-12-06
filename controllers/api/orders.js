@@ -6,19 +6,20 @@ const GEOCODE_URL = `https://maps.googleapis.com/maps/api/geocode/json?key=${pro
 
 module.exports = {
     index,
-    getAll,
+    all,
     create,
     getMatchingAddys,
     getLatLng
 };
 
 async function index(req, res) {
-    const orders = await Order.find({user: req.user._id, status: {'$ne': 'pending'}});
+    const orders = await Order.find({user: req.user._id});
     res.json(orders);
 }
 
-function getAll(req, res) {
-    pass;
+async function all(req, res) {
+    const orders = await Order.find({});
+    res.json(orders);
 }
 
 async function create(req, res) {

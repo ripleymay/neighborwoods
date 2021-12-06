@@ -6,6 +6,10 @@ export function getOrders() {
   return sendRequest(`${BASE_URL}/`);
 }
 
+export function getAllOrders() {
+  return sendRequest(`${BASE_URL}/all`);
+}
+
 export function createOrder({addy, coords, trees}) {
   return sendRequest(`${BASE_URL}/`, 'POST', {addy, coords, trees});
 }

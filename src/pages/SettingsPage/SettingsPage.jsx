@@ -6,6 +6,7 @@ import './SettingsPage.css';
 export default function SettingsPage({ user, setUser}) {
 
     const [userInfo, setUserInfo] = useState({
+        name: user.name,
         email: user.email,
         phone: user.phone
       });
@@ -22,7 +23,6 @@ export default function SettingsPage({ user, setUser}) {
         setShowForm(false);
     }
     
-
     return (
         <main className="SettingsPage">
             <h1>Your settings</h1>
@@ -35,6 +35,8 @@ export default function SettingsPage({ user, setUser}) {
             </div>
             : 
             <form autoComplete="off" className="settings-form"  onSubmit={handleSubmit}>
+                <label>Name</label>
+                <input type="text" name="name" value={userInfo.name} onChange={handleChange} required />
                 <label>Email</label>
                 <input type="text" name="email" value={userInfo.email} onChange={handleChange} required />
                 <label>Phone</label>
