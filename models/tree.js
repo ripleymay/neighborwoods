@@ -10,7 +10,6 @@ const treeSchema = new Schema({
     species: {
         type: String,
         required: true,
-        unique: true
     },
     stature: {
         type: String,

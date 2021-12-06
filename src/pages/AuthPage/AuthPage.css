@@ -1,13 +1,6 @@
 .AuthPage {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    height: 100%;
-}
-
-.auth-content {
-    margin: 5vmin 10vmin 0 10vmin;
+    margin: 5vmin 0 0 0;
+    justify-self: center;
 }
   
 p.error-message {
@@ -17,6 +10,7 @@ p.error-message {
 
 .auth-forms {
     display: flex;
+    justify-content: center;
 }
 
 .auth-toggle {
@@ -27,12 +21,4 @@ p.error-message {
     padding: 3vmin;
     background-color: var(--lightgrey);
     border: .3vmin solid var(--green);
-}
-
-.tree-liner {
-    background-image: url("https://2e1boh22u0fy41r7582thz8g-wpengine.netdna-ssl.com/wp-content/uploads/2020/08/footer-new-01.png");
-    background-repeat: repeat no-repeat; 
-    background-size: contain;
-    height: 22vh;
-    width: 100vw;
 }

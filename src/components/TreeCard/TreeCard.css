@@ -1,6 +1,9 @@
 .TreeCard {
     padding: 1vmin;
-    border: .3vmin solid var(--darkgreen);
+    border: .5vmin solid var(--darkgreen);
+    background-color: var(--lightgrey);
+    margin: 1%;
+    width: 48%;
 }
 
 .italic {

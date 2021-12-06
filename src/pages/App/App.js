@@ -24,8 +24,11 @@ export default function App() {
           </Routes>
         </div>
         :
-        <AuthPage setUser={setUser} />
+        <div className="main-content">
+          <AuthPage setUser={setUser} />
+        </div>
       }
+      <div className="tree-liner"></div>
     </main>
   );
 }

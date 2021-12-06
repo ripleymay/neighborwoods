@@ -7,7 +7,6 @@ export default function AuthPage({ setUser }) {
   const [showSignUp, setShowSignUp] = useState(false);
   return (
     <main className="AuthPage">
-      <div className="auth-content">
         <img src="images/nw-logo.jpeg" alt="NW Logo"/>
         <h4>Get a tree!</h4>
         <div className="auth-forms">
@@ -21,8 +20,6 @@ export default function AuthPage({ setUser }) {
             <LoginForm setUser={setUser} />
           }
         </div>
-      </div>
-      <div className="tree-liner"></div>
     </main>
   );
 }

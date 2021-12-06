@@ -12,6 +12,6 @@ async function index(req, res) {
 }
 
 async function getAvailable(req, res) {
-    const trees = await Tree.find({isAvailable: true});
+    const trees = await Tree.find({isAvailable: true}).sort('stature').exec();
     res.json(trees);
 }

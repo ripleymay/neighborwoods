@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import GoogleMapWidget from '../../components/GoogleMapWidget/GoogleMapWidget';
 import * as ordersAPI from '../../utilities/orders-api';
+import * as treesAPI from '../../utilities/trees-api';
 import './NewOrderPage.css';
 
 export default function NewOrderPage({ user }) {
@@ -12,6 +13,8 @@ export default function NewOrderPage({ user }) {
         lat: null,
         lng: null
     });
+    const [trees, setTrees] = useState([]);
+    const treesRef = useRef();
 
     function handleChange(evt) {
         const newAddy = evt.target.value;
@@ -33,6 +36,14 @@ export default function NewOrderPage({ user }) {
             lng: results.results[0].geometry.location.lng
         });
     }
+
+    useEffect(function() {
+        async function getTrees() {
+          const trees = await treesAPI.getAvail();
+          treesRef.current = trees;
+        }
+        getTrees();
+      }, []);
 
     return (
         <main className="NewOrderPage">
