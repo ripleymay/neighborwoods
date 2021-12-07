@@ -2,9 +2,7 @@
     width: 80%;
 }
 
-.tree-scroll {
-    display: flex;
-    flex-wrap: wrap;
+.admin-tree-scroll {
     height: 90%;
     overflow-y: auto;
     padding: 2%;

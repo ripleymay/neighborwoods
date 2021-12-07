@@ -21,7 +21,32 @@ export default function AdminOrdersPage() {
             <h1>All tree orders</h1>
             {orders.length ? 
                 <div className="order-scroll">
-                    {orders.map(o => <OrderCard order={o} key={o._id}/>)}
+                    <table>
+                        <tr>
+                            <th>Status</th>
+                            <th>Address</th>
+                            <th>User</th>
+                            <th>Email</th>
+                            <th>Phone</th>
+                            <th>Lat</th>
+                            <th>Long</th>
+                            <th>Trees</th>
+                            <th>Created</th>
+                        </tr>
+                        {orders.map(o =>
+                            <tr>
+                                <td>{o.status}</td>
+                                <td>{o.address}</td>
+                                <td>{o.user.name}</td>
+                                <td>{o.user.email}</td>
+                                <td>{o.user.phone}</td>
+                                <td>{o.lat}</td>
+                                <td>{o.lng}</td>
+                                <td>{o.trees.map(t => t.name + ' ')}</td>
+                                <td>{new Date(o.updatedAt).toLocaleDateString()}</td>
+                            </tr>
+                        )}
+                    </table>                
                 </div>
                 : 
                 <h2>No orders yet</h2>

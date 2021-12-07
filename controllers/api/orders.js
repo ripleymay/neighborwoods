@@ -19,7 +19,7 @@ async function index(req, res) {
 }
 
 async function all(req, res) {
-    const orders = await Order.find({});
+    const orders = await Order.find({}).populate('trees').populate('user').exec();
     res.json(orders);
 }
 
