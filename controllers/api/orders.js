@@ -47,6 +47,6 @@ async function getLatLng(req, res) {
 }
 
 async function checkDupes(req, res) {
-    const isDuplicate = await Order.checkDupes(req.query.address);
-    res.json(isDuplicate);
+    const dupes = await Order.checkDupes(req.query.address);
+    res.json(dupes);
 }

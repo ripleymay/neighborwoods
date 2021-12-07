@@ -68,8 +68,8 @@ export default function NewOrderPage({ user }) {
 
     useEffect(function () {
         async function isValid() {
-            // const isDuplicate = await ordersAPI.checkDupes(addy);
-            // if (isDuplicate) return setError('Sorry! Theres already an order for that address placed within the last year. If you think this is a mistake, please call us.');
+            const dupes = await ordersAPI.checkDupes(addy);
+            if (dupes.length) setError('Sorry! Theres already an order for that address placed within the last year. If you think this is a mistake, please call us.');
             const results = await ordersAPI.getLatLng(addy);
             setCoords({
                 lat: results.results[0].geometry.location.lat,
@@ -98,7 +98,6 @@ export default function NewOrderPage({ user }) {
                         ))}
                     </div> :
                         <p>No matching addresses</p>}
-                    <div>{error}</div>
                 </div>
             :
             <div>
@@ -106,18 +105,21 @@ export default function NewOrderPage({ user }) {
                 <p>Lat: {coords.lat} Long: {coords.lng}</p>
                 <div className="select-div">
                     < GoogleMapWidget coords={coords}/>
+                    { error ? 
+                    <p>{error}</p>
+                    :
                     <div className="tree-select">
                         <h3>Large trees: </h3>
                         {treesRef.current.Large.map(t =>
-                            <TreeButton key={t.id} tree={t} handleAdd={handleAdd} handleSub={handleSub} atMax={atMax}/>)}
+                            <TreeButton key={t._id} tree={t} handleAdd={handleAdd} handleSub={handleSub} atMax={atMax}/>)}
                         <h3>Medium trees: </h3>
                         {treesRef.current.Medium.map(t =>
-                            <TreeButton key={t.id} tree={t} handleAdd={handleAdd} handleSub={handleSub} atMax={atMax}/>)}
+                            <TreeButton key={t._id} tree={t} handleAdd={handleAdd} handleSub={handleSub} atMax={atMax}/>)}
                         <h3>Small trees: </h3>
                         {treesRef.current.Small.map(t =>
-                            <TreeButton key={t.id} tree={t} handleAdd={handleAdd} handleSub={handleSub} atMax={atMax}/>)}
+                            <TreeButton key={t._id} tree={t} handleAdd={handleAdd} handleSub={handleSub} atMax={atMax}/>)}
                         <button onClick={handleFinalize} disabled={!trees.length}>Submit order</button>
-                    </div>
+                    </div>}
                 </div>
             </div>
             }

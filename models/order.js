@@ -39,7 +39,7 @@ const orderSchema = new Schema({
 orderSchema.statics.checkDupes = function(addy) {
     //'this' is the Order model
     const yearAgo = new Date(new Date().setFullYear(new Date().getFullYear() - 1)).toISOString();
-    return this.findOne({address: addy}) ? true : false;
+    return this.find({address: addy, createdAt: {$gte: yearAgo}});
 }
 
 module.exports = mongoose.model('Order', orderSchema);
