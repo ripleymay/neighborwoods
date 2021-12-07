@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import './TreeButton.css';
 
-export default function TreeButton({tree, handleAdd, handleSub}) {
+export default function TreeButton({tree, handleAdd, handleSub, atMax}) {
 
     const [count, setCount] = useState(0);
 
@@ -19,8 +19,8 @@ export default function TreeButton({tree, handleAdd, handleSub}) {
       <div className="TreeButton">
           <p>{count}</p>
           <p>{tree.name}</p>
-          <button onClick={handleAddTree}>+</button>
-          { count > 0 && <button onClick={handleSubTree}>-</button>}
+          <button onClick={handleAddTree} disabled={atMax}>+</button>
+          <button onClick={handleSubTree} disabled={!count}>-</button>
       </div>
     );
   }

@@ -17,6 +17,7 @@ export default function NewOrderPage({ user }) {
         lng: null
     });
     const [trees, setTrees] = useState([]);
+    const [atMax, setAtMax] = useState(false);
     const treesRef = useRef();
     const navigate = useNavigate();
 
@@ -41,8 +42,10 @@ export default function NewOrderPage({ user }) {
     }
 
     function handleSub(tree) {
-        trees.splice(trees.findIndex(t => t.name === tree.name), 1);
-        setTrees(trees);
+        const index =  trees.findIndex(t => t.name === tree.name)
+        const newTrees = [...trees];
+        newTrees.splice(index, 1);
+        setTrees(newTrees);
     }
 
     async function handleFinalize() {
@@ -76,6 +79,10 @@ export default function NewOrderPage({ user }) {
         if (isAddyValid) isValid();
     }, [addy, isAddyValid]);
 
+    useEffect(function () {
+        (trees.length < 5) ? setAtMax(false) : setAtMax(true);
+    }, [trees]);
+
     return (
         <main className="NewOrderPage">
             { !isAddyValid ?
@@ -102,13 +109,13 @@ export default function NewOrderPage({ user }) {
                     <div className="tree-select">
                         <h3>Large trees: </h3>
                         {treesRef.current.Large.map(t =>
-                            <TreeButton key={t.id} tree={t} handleAdd={handleAdd} handleSub={handleSub} />)}
+                            <TreeButton key={t.id} tree={t} handleAdd={handleAdd} handleSub={handleSub} atMax={atMax}/>)}
                         <h3>Medium trees: </h3>
                         {treesRef.current.Medium.map(t =>
-                            <TreeButton key={t.id} tree={t} handleAdd={handleAdd} handleSub={handleSub} />)}
+                            <TreeButton key={t.id} tree={t} handleAdd={handleAdd} handleSub={handleSub} atMax={atMax}/>)}
                         <h3>Small trees: </h3>
                         {treesRef.current.Small.map(t =>
-                            <TreeButton key={t.id} tree={t} handleAdd={handleAdd} handleSub={handleSub} />)}
+                            <TreeButton key={t.id} tree={t} handleAdd={handleAdd} handleSub={handleSub} atMax={atMax}/>)}
                         <button onClick={handleFinalize} disabled={!trees.length}>Submit order</button>
                     </div>
                 </div>
