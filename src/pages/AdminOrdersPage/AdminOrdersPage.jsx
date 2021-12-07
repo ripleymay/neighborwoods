@@ -9,11 +9,11 @@ export default function AdminOrdersPage() {
     const [orders, setOrders] = useState([]);
 
     useEffect(function() {
-        async function getPastOrders() {
+        async function getOrders() {
           const orders = await ordersAPI.getAllOrders();
           setOrders(orders);
         }
-        getPastOrders();
+        getOrders();
       }, []);
 
     return (

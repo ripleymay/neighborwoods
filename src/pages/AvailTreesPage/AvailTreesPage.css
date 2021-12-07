@@ -3,9 +3,26 @@
 }
 
 .tree-scroll {
+    position: relative;
+    height: 90%;
+}
+
+.tree-cards {
+    position: absolute;
+    top: 0;
+    left: 0;
     display: flex;
     flex-wrap: wrap;
-    height: 90%;
     overflow-y: auto;
-    padding: 2%;
+    height: 100%;
+    width: 100%;
+    padding-bottom: 5%;
+}
+
+.scroll-down {
+    position: absolute;
+    bottom: 0;
+    background-image: linear-gradient(rgba(255, 255, 255, 0), var(--lightgrey));
+    width: 100%;
+    height: 10%;
 }

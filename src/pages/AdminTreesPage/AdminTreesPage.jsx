@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import * as treesAPI from '../../utilities/trees-api';
-import './AdminTreesPage.css';
+// import './AdminTreesPage.css';
 import TreeCard from '../../components/TreeCard/TreeCard';
 
 

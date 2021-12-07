@@ -6,8 +6,9 @@ const ensureIsAdmin = require('../../config/ensureIsAdmin');
 // routes
 router.get('/', ordersCtrl.index);
 router.post('/', ordersCtrl.create);
-router.get('/all', ensureIsAdmin, ordersCtrl.all);
+router.get('/all', ordersCtrl.all);
 router.get('/new/address', ordersCtrl.getMatchingAddys);
 router.get('/new/latlng', ordersCtrl.getLatLng);
+router.get('/new/duplicates', ordersCtrl.checkDupes);
 
 module.exports = router;

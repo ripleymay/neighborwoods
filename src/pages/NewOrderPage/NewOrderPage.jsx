@@ -11,6 +11,7 @@ export default function NewOrderPage({ user }) {
     const [addy, setAddy] = useState('');
     const [addyMatches, setAddyMatches] = useState([]);
     const [isAddyValid, setIsAddyValid] = useState(false);
+    const [error, setError] = useState('');
     const [coords, setCoords] = useState({
         lat: null,
         lng: null
@@ -31,13 +32,8 @@ export default function NewOrderPage({ user }) {
     }  
 
     async function handleSelect(evt) {
-        handleChange(evt);        
+        handleChange(evt);     
         setIsAddyValid(true);
-        const results = await ordersAPI.getLatLng(addy);
-        setCoords({
-            lat: results.results[0].geometry.location.lat, 
-            lng: results.results[0].geometry.location.lng
-        });
     }
 
     function handleAdd(tree) {
@@ -50,11 +46,7 @@ export default function NewOrderPage({ user }) {
     }
 
     async function handleFinalize() {
-        await ordersAPI.createOrder({
-            addy,
-            coords,
-            trees
-        });
+        await ordersAPI.createOrder({ addy, coords, trees });
         navigate('/orders');
     }
 
@@ -71,6 +63,19 @@ export default function NewOrderPage({ user }) {
         getTrees();
       }, []);
 
+    useEffect(function () {
+        async function isValid() {
+            // const isDuplicate = await ordersAPI.checkDupes(addy);
+            // if (isDuplicate) return setError('Sorry! Theres already an order for that address placed within the last year. If you think this is a mistake, please call us.');
+            const results = await ordersAPI.getLatLng(addy);
+            setCoords({
+                lat: results.results[0].geometry.location.lat,
+                lng: results.results[0].geometry.location.lng
+            });
+        }
+        if (isAddyValid) isValid();
+    }, [addy, isAddyValid]);
+
     return (
         <main className="NewOrderPage">
             { !isAddyValid ?
@@ -86,6 +91,7 @@ export default function NewOrderPage({ user }) {
                         ))}
                     </div> :
                         <p>No matching addresses</p>}
+                    <div>{error}</div>
                 </div>
             :
             <div>
@@ -96,14 +102,14 @@ export default function NewOrderPage({ user }) {
                     <div className="tree-select">
                         <h3>Large trees: </h3>
                         {treesRef.current.Large.map(t =>
-                            <TreeButton tree={t} handleAdd={handleAdd} handleSub={handleSub} />)}
+                            <TreeButton key={t.id} tree={t} handleAdd={handleAdd} handleSub={handleSub} />)}
                         <h3>Medium trees: </h3>
                         {treesRef.current.Medium.map(t =>
-                            <TreeButton tree={t} handleAdd={handleAdd} handleSub={handleSub} />)}
+                            <TreeButton key={t.id} tree={t} handleAdd={handleAdd} handleSub={handleSub} />)}
                         <h3>Small trees: </h3>
                         {treesRef.current.Small.map(t =>
-                            <TreeButton tree={t} handleAdd={handleAdd} handleSub={handleSub} />)}
-                        <button onClick={handleFinalize}>Submit order</button>
+                            <TreeButton key={t.id} tree={t} handleAdd={handleAdd} handleSub={handleSub} />)}
+                        <button onClick={handleFinalize} disabled={!trees.length}>Submit order</button>
                     </div>
                 </div>
             </div>

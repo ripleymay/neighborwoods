@@ -21,3 +21,7 @@ export async function getMatchingAddys(addy) {
 export async function getLatLng(addy) {
     return sendRequest(`${BASE_URL}/new/latlng?address=${addy}`);
 }
+
+export async function checkDupes(addy) {
+  return sendRequest(`${BASE_URL}/new/duplicates?address=${addy}`);
+}

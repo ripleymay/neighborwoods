@@ -9,11 +9,12 @@ module.exports = {
     all,
     create,
     getMatchingAddys,
-    getLatLng
+    getLatLng,
+    checkDupes
 };
 
 async function index(req, res) {
-    const orders = await Order.find({user: req.user._id});
+    const orders = await Order.find({user: req.user._id}).populate('trees').exec();
     res.json(orders);
 }
 
@@ -43,4 +44,9 @@ async function getLatLng(req, res) {
     const url = `${GEOCODE_URL}&address=${req.query.address}`;
     const results = await fetch(url).then((res) => res.json());
     res.json(results);
+}
+
+async function checkDupes(req, res) {
+    const isDuplicate = await Order.checkDupes(req.query.address);
+    res.json(isDuplicate);
 }
