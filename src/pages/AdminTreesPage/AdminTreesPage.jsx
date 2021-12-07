@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import * as treesAPI from '../../utilities/trees-api';
+import TreeLineItem from '../../components/TreeLineItem/TreeLineItem';
 import './AdminTreesPage.css';
 
 export default function AdminTreesPage() {
@@ -19,20 +20,18 @@ export default function AdminTreesPage() {
             <h1>All trees</h1>
             <div className="admin-tree-scroll">
                 <table>
-                    <tr>
-                        <th>Tree</th>
-                        <th>Species</th>
-                        <th>Stature</th>
-                        <th>Available</th>
-                    </tr>
-                    {trees.map(t =>
+                    <thead>
                         <tr>
-                            <td>{t.name}</td>
-                            <td>{t.species}</td>
-                            <td>{t.stature}</td>
-                            <td>{t.isAvailable ? 'True' : 'False'}</td>
+                            <th>Available</th>
+                            <th>Tree</th>
+                            <th>Species</th>
+                            <th>Stature</th>
+                            <th>Description</th>
                         </tr>
-                    )}
+                    </thead>
+                    <tbody>
+                        {trees.map(t => < TreeLineItem key = {t._id} tree={t} />)}
+                    </tbody>
                 </table>
             </div>
         </main>

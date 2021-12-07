@@ -9,3 +9,7 @@ export function getAvail() {
 export function getAll() {
   return sendRequest(`${BASE_URL}/all`);
 }
+
+export function toggleAvail(treeId) {
+  return sendRequest(`${BASE_URL}/${treeId}/available`, 'PUT');
+}

@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import * as ordersAPI from '../../utilities/orders-api';
 import './AdminOrdersPage.css'
-import OrderCard from '../../components/OrderCard/OrderCard';
-
 
 export default function AdminOrdersPage() {
 
@@ -22,30 +20,34 @@ export default function AdminOrdersPage() {
             {orders.length ? 
                 <div className="order-scroll">
                     <table>
-                        <tr>
-                            <th>Status</th>
-                            <th>Address</th>
-                            <th>User</th>
-                            <th>Email</th>
-                            <th>Phone</th>
-                            <th>Lat</th>
-                            <th>Long</th>
-                            <th>Trees</th>
-                            <th>Created</th>
-                        </tr>
-                        {orders.map(o =>
+                        <thead>
                             <tr>
-                                <td>{o.status}</td>
-                                <td>{o.address}</td>
-                                <td>{o.user.name}</td>
-                                <td>{o.user.email}</td>
-                                <td>{o.user.phone}</td>
-                                <td>{o.lat}</td>
-                                <td>{o.lng}</td>
-                                <td>{o.trees.map(t => t.name + ' ')}</td>
-                                <td>{new Date(o.updatedAt).toLocaleDateString()}</td>
+                                <th>Status</th>
+                                <th>Address</th>
+                                <th>User</th>
+                                <th>Email</th>
+                                <th>Phone</th>
+                                <th>Lat</th>
+                                <th>Long</th>
+                                <th>Trees</th>
+                                <th>Created</th>
                             </tr>
-                        )}
+                        </thead>
+                        <tbody>
+                            {orders.map(o =>
+                                <tr key={o._id}>
+                                    <td>{o.status}</td>
+                                    <td>{o.address}</td>
+                                    <td>{o.user.name}</td>
+                                    <td>{o.user.email}</td>
+                                    <td>{o.user.phone}</td>
+                                    <td>{o.lat}</td>
+                                    <td>{o.lng}</td>
+                                    <td>{o.trees.map(t => t.name + ' ')}</td>
+                                    <td>{new Date(o.updatedAt).toLocaleDateString()}</td>
+                                </tr>
+                            )}
+                        </tbody>
                     </table>                
                 </div>
                 : 
