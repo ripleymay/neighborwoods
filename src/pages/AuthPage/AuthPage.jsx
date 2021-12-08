@@ -8,10 +8,14 @@ export default function AuthPage({ setUser }) {
   return (
     <main className="AuthPage">
         <img src="images/nw-logo.jpeg" alt="NW Logo"/>
-        <h4>Get a tree!</h4>
+        <p id="greeting">
+          Welcome! <br/>
+          Thanks for your interest in growing our local urban forest.
+        </p>
+        <hr />
         <div className="auth-forms">
           <div className="auth-toggle">
-            <p>{showSignUp ? 'Already a user?' : 'Need to create an account?'}</p>
+            <p id="toggle-desc">{showSignUp ? 'Already a user?' : 'Need to create an account?'}</p>
             <button className="auth-btn" onClick={() => setShowSignUp(!showSignUp)}>{showSignUp ? 'Log In' : 'Sign Up'}</button>
           </div>
           { showSignUp ?
