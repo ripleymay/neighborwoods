@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import * as ordersAPI from '../../utilities/orders-api';
+import OrderListItem from '../../components/OrderLineItem/OrderLineItem';
 import './AdminOrdersPage.css'
 
 export default function AdminOrdersPage() {
@@ -34,19 +35,7 @@ export default function AdminOrdersPage() {
                             </tr>
                         </thead>
                         <tbody>
-                            {orders.map(o =>
-                                <tr key={o._id}>
-                                    <td>{o.status}</td>
-                                    <td>{o.address}</td>
-                                    <td>{o.user.name}</td>
-                                    <td>{o.user.email}</td>
-                                    <td>{o.user.phone}</td>
-                                    <td>{o.lat}</td>
-                                    <td>{o.lng}</td>
-                                    <td>{o.trees.map(t => t.name + ' ')}</td>
-                                    <td>{new Date(o.updatedAt).toLocaleDateString()}</td>
-                                </tr>
-                            )}
+                            {orders.map(o => <OrderListItem order={o} />)}
                         </tbody>
                     </table>                
                 </div>

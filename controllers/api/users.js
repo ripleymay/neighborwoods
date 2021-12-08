@@ -1,4 +1,5 @@
 const User = require('../../models/user');
+const Order = require('../../models/order');
 const jwt = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
@@ -7,6 +8,7 @@ module.exports = {
   login,
   update,
   all,
+  delete: deleteUser,
   checkToken
 };
 
@@ -42,6 +44,14 @@ async function update(req, res) {
 async function all(req, res) {
   const users = await User.find({});
   res.json(users);
+}
+
+async function deleteUser(req, res) {
+  // would need to delete all orders made by this user as well..
+  await Order.deleteMany({user: req.params.id})
+  await User.findByIdAndDelete(req.params.id);
+  const updatedUsers = await User.find({});
+  res.json(updatedUsers);
 }
 
 function checkToken(req, res) {

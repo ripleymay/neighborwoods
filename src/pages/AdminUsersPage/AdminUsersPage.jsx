@@ -6,6 +6,11 @@ export default function AdminUsersPage() {
 
     const [users, setUsers] = useState([]);
 
+    async function handleDelete(user) {
+        const newUsers = await usersAPI.deleteUser(user._id);
+        setUsers(newUsers);
+    }
+
     useEffect(function() {
         async function getUsers() {
           const users = await usersAPI.getAll();
@@ -25,7 +30,8 @@ export default function AdminUsersPage() {
                                 <th>Name</th>
                                 <th>Email</th>
                                 <th>Phone</th>
-                                <th>User since</th>
+                                <th>Joined</th>
+                                <th>Delete?</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -34,7 +40,8 @@ export default function AdminUsersPage() {
                                     <td>{u.name}</td>
                                     <td>{u.email}</td>
                                     <td>{u.phone}</td>
-                                    <td>{u.createdAt}</td>
+                                    <td>{new Date(u.updatedAt).toLocaleDateString()}</td>
+                                    <td><button onClick={() => handleDelete(u)}>X</button></td>
                                 </tr>
                             )}
                         </tbody>
