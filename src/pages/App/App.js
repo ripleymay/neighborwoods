@@ -22,7 +22,6 @@ export default function App() {
         <div className="main-content">
           <AdminNavBar user={user} setUser={setUser} />
           <Routes>
-            {/* client-side route that renders the component instance if the path matches the url in the address bar */}
             <Route path="/orders/all" element={< AdminOrdersPage />} />
             <Route path="/users/all" element={< AdminUsersPage />} />
             <Route path="/trees/all" element={< AdminTreesPage />} />

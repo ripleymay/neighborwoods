@@ -4,7 +4,8 @@ module.exports = {
     index,
     all,
     avail,
-    update
+    update,
+    create
 };
 
 async function index(req, res) {
@@ -26,5 +27,15 @@ async function avail(req, res) {
 
 async function update(req, res) {
     const tree = await Tree.findByIdAndUpdate(req.params.id, req.body, {new: true});
+    res.json(tree);
+}
+
+async function create(req, res) {
+    const tree = new Tree();
+    tree.name = req.body.name;
+    tree.species = req.body.species;
+    tree.stature = req.body.stature;
+    tree.description = req.body.description;
+    await tree.save();
     res.json(tree);
 }

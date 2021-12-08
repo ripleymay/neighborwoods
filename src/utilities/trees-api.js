@@ -17,3 +17,7 @@ export function toggleAvail(treeId) {
 export function update(treeId, info) {
   return sendRequest(`${BASE_URL}/${treeId}`, 'PUT', info);
 }
+
+export function create(tree) {
+  return sendRequest(`${BASE_URL}/create`, 'POST', tree);
+}
