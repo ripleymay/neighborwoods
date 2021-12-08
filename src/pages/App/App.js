@@ -7,6 +7,7 @@ import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
 import AdminOrdersPage from '../AdminOrdersPage/AdminOrdersPage';
 import AvailTreesPage from '../AvailTreesPage/AvailTreesPage';
 import AdminTreesPage from '../AdminTreesPage/AdminTreesPage';
+import AdminUsersPage from '../AdminUsersPage/AdminUsersPage';
 import NewOrderPage from '../NewOrderPage/NewOrderPage';
 import SettingsPage from '../SettingsPage/SettingsPage';
 import NavBar from '../../components/NavBar/NavBar';
@@ -23,7 +24,9 @@ export default function App() {
           <Routes>
             {/* client-side route that renders the component instance if the path matches the url in the address bar */}
             <Route path="/orders/all" element={< AdminOrdersPage />} />
+            <Route path="/users/all" element={< AdminUsersPage />} />
             <Route path="/trees/all" element={< AdminTreesPage />} />
+            <Route path="/settings" element={< SettingsPage user={user} setUser={setUser}/>} />
             <Route path="/*" element={<Navigate to="/orders/all" />} />
           </Routes>
         </div>

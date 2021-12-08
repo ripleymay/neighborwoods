@@ -6,6 +6,7 @@ module.exports = {
   create,
   login,
   update,
+  all,
   checkToken
 };
 
@@ -36,6 +37,11 @@ async function create(req, res) {
 async function update(req, res) {
   const user = await User.findByIdAndUpdate(req.params.id, req.body, {new: true});
   res.json(user);
+}
+
+async function all(req, res) {
+  const users = await User.find({});
+  res.json(users);
 }
 
 function checkToken(req, res) {

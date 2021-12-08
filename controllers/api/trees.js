@@ -3,7 +3,8 @@ const Tree = require('../../models/tree');
 module.exports = {
     index,
     all,
-    avail
+    avail,
+    update
 };
 
 async function index(req, res) {
@@ -20,5 +21,10 @@ async function avail(req, res) {
     const tree = await Tree.findById(req.params.id);
     tree.isAvailable = !tree.isAvailable;
     await tree.save();
+    res.json(tree);
+}
+
+async function update(req, res) {
+    const tree = await Tree.findByIdAndUpdate(req.params.id, req.body, {new: true});
     res.json(tree);
 }

@@ -27,6 +27,7 @@ export default function AdminTreesPage() {
                             <th>Species</th>
                             <th>Stature</th>
                             <th>Description</th>
+                            <th>Edit</th>
                         </tr>
                     </thead>
                     <tbody>

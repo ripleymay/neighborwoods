@@ -13,7 +13,8 @@ const treeSchema = new Schema({
     },
     stature: {
         type: String,
-        required: true
+        required: true,
+        enum: ['Small', 'Medium', 'Large']
     },
     description: {
         type: String

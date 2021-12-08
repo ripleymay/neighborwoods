@@ -1,0 +1,9 @@
+.AdminUsersPage {
+    width: 80%;
+}
+
+.user-scroll {
+    height: 90%;
+    overflow-y: auto;
+    padding: 2%;
+}

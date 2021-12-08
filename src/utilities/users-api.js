@@ -17,3 +17,7 @@ export function checkToken() {
 export function update(userId, info) {
   return sendRequest(`${BASE_URL}/${userId}`, 'PUT', info);
 }
+
+export function getAll() {
+  return sendRequest(`${BASE_URL}/all`);
+}
