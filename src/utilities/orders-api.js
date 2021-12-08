@@ -18,6 +18,10 @@ export function deleteOrder(orderId) {
   return sendRequest(`${BASE_URL}/${orderId}`, 'DELETE');
 }
 
+export function updateStatus(orderId, newStatus) {
+  return sendRequest(`${BASE_URL}/${orderId}`, 'PUT', newStatus);
+}
+
 export async function getMatchingAddys(addy) {
     return sendRequest(`${BASE_URL}/new/address?address=${addy}`);
 }

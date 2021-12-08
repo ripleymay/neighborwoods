@@ -9,6 +9,7 @@ module.exports = {
     all,
     create,
     delete: deleteOrder,
+    updateStatus,
     getMatchingAddys,
     getLatLng,
     checkDupes
@@ -39,6 +40,13 @@ async function deleteOrder(req, res) {
     await Order.findByIdAndDelete(req.params.id);
     const newOrders = await Order.find({}).populate('trees').populate('user').exec();
     res.json(newOrders);
+}
+
+async function updateStatus(req, res) {
+    const order = await Order.findById(req.params.id);
+    order.status = req.body.status;
+    await order.save();
+    res.json(order);
 }
 
 async function getMatchingAddys(req, res) {
