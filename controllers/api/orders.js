@@ -8,6 +8,7 @@ module.exports = {
     index,
     all,
     create,
+    delete: deleteOrder,
     getMatchingAddys,
     getLatLng,
     checkDupes
@@ -32,6 +33,12 @@ async function create(req, res) {
     order.trees = req.body.trees.map(t => t._id);
     await order.save();
     res.json(order);
+}
+
+async function deleteOrder(req, res) {
+    await Order.findByIdAndDelete(req.params.id);
+    const newOrders = await Order.find({}).populate('trees').populate('user').exec();
+    res.json(newOrders);
 }
 
 async function getMatchingAddys(req, res) {

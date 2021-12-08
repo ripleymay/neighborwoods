@@ -10,7 +10,8 @@ export default function AdminTreesPage() {
         name: '',
         species: '',
         stature: '',
-        description: ''
+        description: '',
+        isAvailable: false
     });
 
     function handleChange(evt) {
@@ -48,7 +49,7 @@ export default function AdminTreesPage() {
                     </thead>
                     <tbody>
                         <tr>
-                            <td></td>
+                            <td>X</td>
                             <td><input type="text" name="name" value={newTree.name} onChange={handleChange} required /></td>
                             <td><input type="text" name="species" value={newTree.species} onChange={handleChange} required /></td>
                             <td><input type="text" name="stature" value={newTree.stature} onChange={handleChange} required /></td>

@@ -1,25 +1,19 @@
 import React, {useState} from "react";
 import * as ordersAPI from '../../utilities/orders-api';
 
-export default function OrderLineItem({order}) {
+export default function OrderLineItem({order, setOrders}) {
 
     const [status, setStatus] = useState(order.status);
-    const [orderInfo, setOrderInfo] = useState(order);
 
     async function changeStatus() {
         // const order = await ordersAPI.updateStatus(tree._id);
         // setOrderInfo(newTree.isAvailable);
     }
 
-    // function handleChange(evt) {
-    //     setTreeInfo({ ...treeInfo, [evt.target.name]: evt.target.value });
-    // }
-
-    // async function handleSubmit() {
-    //     const updatedTree = await treesAPI.update(tree._id, treeInfo);
-    //     setTreeInfo(updatedTree);
-    //     setShowEdit(false);
-    // }
+    async function handleDelete() {
+        const newOrders = await ordersAPI.deleteOrder(order._id);
+        setOrders(newOrders);
+    }
 
     return (
         <tr>
@@ -38,6 +32,7 @@ export default function OrderLineItem({order}) {
             <td>{order.lng}</td>
             <td>{order.trees.map(t => t.name )}</td>
             <td>{new Date(order.updatedAt).toLocaleDateString()}</td>
+            <td><button onClick={handleDelete}>X</button></td>
         </tr>
     );
   }

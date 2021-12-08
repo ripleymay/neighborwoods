@@ -32,10 +32,11 @@ export default function AdminOrdersPage() {
                                 <th>Long</th>
                                 <th>Trees</th>
                                 <th>Created</th>
+                                <th>Delete?</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {orders.map(o => <OrderListItem order={o} />)}
+                            {orders.map(o => <OrderListItem order={o} setOrders={setOrders} key={o._id} />)}
                         </tbody>
                     </table>                
                 </div>

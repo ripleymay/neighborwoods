@@ -14,6 +14,10 @@ export function createOrder({addy, coords, trees}) {
   return sendRequest(`${BASE_URL}/`, 'POST', {addy, coords, trees});
 }
 
+export function deleteOrder(orderId) {
+  return sendRequest(`${BASE_URL}/${orderId}`, 'DELETE');
+}
+
 export async function getMatchingAddys(addy) {
     return sendRequest(`${BASE_URL}/new/address?address=${addy}`);
 }
