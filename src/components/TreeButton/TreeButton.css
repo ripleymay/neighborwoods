@@ -1,4 +1,39 @@
 .TreeButton {
     display: flex;
     justify-content: space-between;
+    width: 100%;
+}
+
+.TreeButton button {
+    width: fit-content;
+    margin: 0.5vmin;
+    padding: 0.5vmin;
+    color: var(--darkgreen);
+    background-color: var(--white);
+    font-size: 2vmin;
+    text-decoration: none;
+    text-align: center;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.TreeButton button:hover {
+    background-color: var(--olive);
+    color: white;
+}
+
+.TreeButton button.disabled:hover {
+    background-color: var(--lightgrey);
+    color: white;
+}
+
+.TreeButton p {
+    margin: 0;
+}
+
+.tree-num {
+    font-size: 2vmin;
+    font-weight: 600;
 }

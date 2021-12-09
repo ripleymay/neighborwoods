@@ -50,7 +50,7 @@
     animation: pulse 2s infinite;
 }
 .status-circle.Delivered {
-    background-color: darkblue;
+    background-color: var(--darkred);
 }
 
 .order-dates {

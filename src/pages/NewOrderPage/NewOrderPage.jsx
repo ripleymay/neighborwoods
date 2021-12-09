@@ -86,29 +86,32 @@ export default function NewOrderPage({ user }) {
     return (
         <main className="NewOrderPage">
             <h1 className="page-title">Place a new order</h1>
+            <p>{ !isAddyValid ? 'Enter an address below where you\'d like to plant trees.' :
+            'Select your trees! There is a limit of 5 for residential orders. Please prioritize large trees as they provide the most shade and energy benefits.' } </p>
             <hr />
             { !isAddyValid ?
                 <div>
-                    <h2>Tell us your address</h2>
-                    <form onSubmit={handleSubmit}>
+                    <form className="addy-form" onSubmit={handleSubmit}>
                         <input type="text" onChange={handleChange} value={addy} required />
-                        <button type="submit" value="submit">🔎</button>
+                        <button className="auth-btn" type="submit" value="submit">🔎</button>
                     </form>
-                    {addyMatches.length ? <div>
+                    {addyMatches.length ? <div className="addy-btns">
                         {addyMatches.map((a, idx) => (
-                            <button key={idx} onClick={handleSelect} value={a.description}>{a.description}</button>
+                            <button key={idx} className="addy-btn" onClick={handleSelect} value={a.description}>{a.description}</button>
                         ))}
                     </div> :
                         <p>No matching addresses</p>}
                 </div>
             :
-            <div>
-                <p>Order Address: {addy}</p>
-                <p>Lat: {coords.lat} Long: {coords.lng}</p>
+            <>
+                <div className="addy-info">
+                    <h3>{addy}</h3>
+                    <p>Latitude: {parseFloat(coords.lat).toFixed(3)} / Longitude: {parseFloat(coords.lng).toFixed(3)}</p>
+                </div>
                 <div className="select-div">
                     < GoogleMapWidget coords={coords}/>
                     { error ? 
-                    <p>{error}</p>
+                    <h2 id="addy-error">{error}</h2>
                     :
                     <div className="tree-select">
                         <h3>Large trees: </h3>
@@ -120,10 +123,10 @@ export default function NewOrderPage({ user }) {
                         <h3>Small trees: </h3>
                         {treesRef.current.Small.map(t =>
                             <TreeButton key={t._id} tree={t} handleAdd={handleAdd} handleSub={handleSub} atMax={atMax}/>)}
-                        <button onClick={handleFinalize} disabled={!trees.length}>Submit order</button>
+                        <button className="auth-btn" onClick={handleFinalize} disabled={!trees.length}>Submit order</button>
                     </div>}
                 </div>
-            </div>
+            </>
             }
         </main>
     );

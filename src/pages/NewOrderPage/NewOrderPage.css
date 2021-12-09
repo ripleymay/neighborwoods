@@ -1,9 +1,64 @@
 .NewOrderPage {
-    background-color: var(--lightgrey);
     width: 80%;
 }
 
 .select-div {
     display: flex;
     justify-content: space-evenly;
+    height: 69%;
 }
+
+.addy-form > input {
+    padding: 1vmin;
+    font-size: 2vmin;
+    border: .1vmin solid var(--darkolive);
+    color: var(--darkgrey);
+    background-image: none !important; /* prevent lastpass */
+    outline: none;
+}
+  
+.addy-form > input:focus {
+    border-color: var(--darkgrey);
+}
+
+.addy-btns {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.addy-btn {
+    width: fit-content;
+    margin: 1vmin;
+    padding: 1vmin;
+    color: var(--darkgreen);
+    background-color: var(--white);
+    font-size: 2vmin;
+    text-decoration: none;
+    text-align: center;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.addy-btn:hover {
+    background-color: var(--olive);
+    color: white;
+}
+
+#addy-error {
+    padding: 5%;
+    width: 50%;
+}
+
+.addy-info {
+    text-align: left;
+}
+
+.tree-select {
+    height: 100%;
+    width: 25%;
+    overflow-y: auto;
+}
+  
