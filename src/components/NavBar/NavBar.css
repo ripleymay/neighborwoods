@@ -22,7 +22,7 @@
     color: var(--darkgrey);
     text-decoration: none;
     text-align: left;
-    font-size: 2vmin;
+    font-size: 1.25rem;
     width: fit-content;
     border-bottom: var(--white) 0.2rem solid;
     transition: 0.3s;

@@ -15,7 +15,7 @@ export default function Map({coords}) {
       animation: window.google.maps.Animation.DROP,
       map: map,
     });
-  });
+  }, [coords]);
 
   return(<div id="map"></div>)
 }

@@ -18,7 +18,7 @@ export default function TreeButton({tree, handleAdd, handleSub, atMax}) {
     return (
       <div className="TreeButton">
           <p><span className="tree-num">{count}</span> {tree.name}</p>
-          <div>
+          <div className="tree-btns">
             <button onClick={handleAddTree} disabled={atMax}>+</button>
             <button onClick={handleSubTree} disabled={!count}>-</button>
           </div>

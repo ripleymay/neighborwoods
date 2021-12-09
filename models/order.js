@@ -7,12 +7,6 @@ const orderSchema = new Schema({
         ref: 'User',
         required: true 
     },
-    type: {
-        type: String,
-        required: true,
-        enum: ['Residential', 'Community Group'],
-        default: 'Residential'
-    },
     status: {
         type: String,
         required: true,

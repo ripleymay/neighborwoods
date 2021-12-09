@@ -18,6 +18,7 @@ export default function NewOrderPage({ user }) {
     });
     const [trees, setTrees] = useState([]);
     const [atMax, setAtMax] = useState(false);
+    const MAX_TREES = 5;
     const treesRef = useRef();
     const navigate = useNavigate();
 
@@ -80,7 +81,7 @@ export default function NewOrderPage({ user }) {
     }, [addy, isAddyValid]);
 
     useEffect(function () {
-        (trees.length < 5) ? setAtMax(false) : setAtMax(true);
+        (trees.length < MAX_TREES) ? setAtMax(false) : setAtMax(true);
     }, [trees]);
 
     return (
@@ -109,7 +110,7 @@ export default function NewOrderPage({ user }) {
                     <p>Latitude: {parseFloat(coords.lat).toFixed(3)} / Longitude: {parseFloat(coords.lng).toFixed(3)}</p>
                 </div>
                 <div className="select-div">
-                    < GoogleMapWidget coords={coords}/>
+                    < GoogleMapWidget coords={coords} />
                     { error ? 
                     <h2 id="addy-error">{error}</h2>
                     :

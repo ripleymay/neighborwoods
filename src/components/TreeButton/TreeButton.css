@@ -1,16 +1,17 @@
 .TreeButton {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     width: 100%;
 }
 
 .TreeButton button {
-    width: fit-content;
+    width: 4vmin;
     margin: 0.5vmin;
     padding: 0.5vmin;
-    color: var(--darkgreen);
-    background-color: var(--white);
-    font-size: 2vmin;
+    color: var(--white);
+    background-color: var(--olive);
+    font-size: 3vmin;
     text-decoration: none;
     text-align: center;
     border: none;
@@ -20,13 +21,14 @@
 }
 
 .TreeButton button:hover {
-    background-color: var(--olive);
+    background-color: var(--darkgreen);
     color: white;
 }
 
-.TreeButton button.disabled:hover {
-    background-color: var(--lightgrey);
+.TreeButton button:disabled {
+    background-color: var(--grey);
     color: white;
+    cursor: default;
 }
 
 .TreeButton p {
@@ -34,6 +36,10 @@
 }
 
 .tree-num {
-    font-size: 2vmin;
+    font-size: calc(16px + 0.5vmin);
     font-weight: 600;
+}
+
+.tree-btns {
+    min-width: 10vmin;
 }
