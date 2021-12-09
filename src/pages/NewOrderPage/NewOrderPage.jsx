@@ -106,8 +106,12 @@ export default function NewOrderPage({ user }) {
             :
             <>
                 <div className="addy-info">
-                    <h3>{addy}</h3>
-                    <p>Latitude: {parseFloat(coords.lat).toFixed(3)} / Longitude: {parseFloat(coords.lng).toFixed(3)}</p>
+                    <div>
+                        <h3>{addy}</h3>
+                        <p>Latitude: {parseFloat(coords.lat).toFixed(3)} / Longitude: {parseFloat(coords.lng).toFixed(3)}</p>
+                    </div>
+                    <p>The <span className="darkgreen">dark green</span> circle shows the planting radius for a <span className="bolder">small</span> tree (10ft), <br/>
+                    and the <span className="olive">light green</span> circle shows that of a <span className="bolder">large</span> tree (20ft).</p>
                 </div>
                 <div className="select-div">
                     < GoogleMapWidget coords={coords} />

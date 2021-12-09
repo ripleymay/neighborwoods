@@ -52,12 +52,25 @@
 }
 
 .addy-info {
-    text-align: left;
+    display: flex;
+    justify-content: space-between;
 }
 
 .tree-select {
     height: 100%;
     width: 30%;
     overflow-y: auto;
+}
+
+.bolder {
+    font-weight: bolder;
+}
+
+.olive {
+    color: var(--olive);
+}
+
+.darkgreen {
+    color: var(--darkgreen);
 }
   

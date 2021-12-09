@@ -34,8 +34,6 @@ View planning on the Trello [board](https://trello.com/b/e6e49zdm/neighborwoods-
 
 ## Next steps
 
-One feature from the old web app that this one does not yet include is a visual representation of how much planting space trees will need. I would love to incorporate circular polygons on the map widget to show 10ft radius, 20ft radius, etc. so that users know how many trees they can afford to plant on their property.
-
 The other pieces of ideal functionality...
 * Automatic rejection of order if address is outside of Austin Full Purpose Jurisdiction, AKA the boundaries of eligibility for the program
 * Distinction of 'type' of order - Residential vs Community Group, for example - and dynamically set tree number limit
