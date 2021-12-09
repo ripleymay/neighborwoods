@@ -21,7 +21,8 @@ export default function AdminUsersPage() {
 
     return (
         <main className="AdminUsersPage">
-            <h1>All users</h1>
+            <h1 className="page-title">All users</h1>
+            <hr />
             {users.length ? 
                 <div className="user-scroll">
                     <table>

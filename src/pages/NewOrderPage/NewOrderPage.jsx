@@ -85,6 +85,8 @@ export default function NewOrderPage({ user }) {
 
     return (
         <main className="NewOrderPage">
+            <h1 className="page-title">Place a new order</h1>
+            <hr />
             { !isAddyValid ?
                 <div>
                     <h2>Tell us your address</h2>

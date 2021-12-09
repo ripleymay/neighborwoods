@@ -34,7 +34,8 @@ export default function AdminTreesPage() {
 
     return (
         <main className="AdminTreesPage">
-            <h1>All trees</h1>
+            <h1 className="page-title">All trees</h1>
+            <hr />
             <div className="admin-tree-scroll">
                 <table>
                     <thead>
@@ -44,7 +45,7 @@ export default function AdminTreesPage() {
                             <th>Species</th>
                             <th>Stature</th>
                             <th>Description</th>
-                            <th>Edit</th>
+                            <th>Edit?</th>
                         </tr>
                     </thead>
                     <tbody>

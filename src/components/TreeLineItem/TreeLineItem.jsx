@@ -37,7 +37,7 @@ export default function TreeLineItem({tree}) {
                     <td>{treeInfo.species}</td>
                     <td>{treeInfo.stature}</td>
                     <td>{treeInfo.description}</td>
-                    <td><button onClick={() => setShowEdit(true)}>?</button></td>
+                    <td><button onClick={() => setShowEdit(true)}>✎</button></td>
                 </tr>
                 :
                 <tr>

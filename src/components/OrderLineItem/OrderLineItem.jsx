@@ -28,10 +28,10 @@ export default function OrderLineItem({order, setOrders}) {
             <td>{order.user.name}</td>
             <td>{order.user.email}</td>
             <td>{order.user.phone}</td>
-            <td>{order.lat}</td>
-            <td>{order.lng}</td>
-            <td>{order.trees.map(t => t.name )}</td>
-            <td>{new Date(order.updatedAt).toLocaleDateString()}</td>
+            <td>{parseFloat(order.lat).toFixed(3)}</td>
+            <td>{parseFloat(order.lng).toFixed(3)}</td>
+            <td>{order.trees.map(t => <>{t.name}, </> )}</td>
+            <td>{new Date(order.createdAt).toLocaleDateString()}</td>
             <td><button onClick={handleDelete}>X</button></td>
         </tr>
     );

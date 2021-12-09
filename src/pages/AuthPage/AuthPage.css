@@ -71,6 +71,7 @@ p.error-message {
     border: none;
     outline: none;
     cursor: pointer;
+    transition: 0.3s;
 }
   
 .auth-btn:disabled, form:invalid button[type="submit"] {

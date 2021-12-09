@@ -23,8 +23,19 @@
     text-decoration: none;
     text-align: left;
     font-size: 2vmin;
+    width: fit-content;
+    border-bottom: var(--white) 0.2rem solid;
+    transition: 0.3s;
+}
+
+.side-nav > a.active {
+    border-bottom: var(--olive) 0.2rem solid;
 }
 
 .side-nav > a:hover {
-    text-decoration: underline;
+    border-bottom: var(--olive) 0.2rem solid;
+}
+
+.emoji {
+    font-size: 2rem;
 }

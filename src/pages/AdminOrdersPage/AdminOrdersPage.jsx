@@ -17,7 +17,8 @@ export default function AdminOrdersPage() {
 
     return (
         <main className="AdminOrdersPage">
-            <h1>All tree orders</h1>
+            <h1 className="page-title">All orders</h1>
+            <hr/>
             {orders.length ? 
                 <div className="order-scroll">
                     <table>

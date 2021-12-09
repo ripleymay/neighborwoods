@@ -1,6 +1,75 @@
 .OrderCard {
-    padding: 1vmin;
-    border: .5vmin solid var(--darkgreen);
+    padding: 2vmin;
+    border: .25vmin solid var(--darkgreen);
     background-color: var(--lightgrey);
-    margin: 1%;
+    margin: 1% 2.5%;
 }
+
+.OrderCard > h3 {
+    text-align: left;
+    margin: 1vmin;
+    font-weight: 500;
+}
+
+.underline{
+    text-decoration: underline var(--darkgreen);
+}
+
+.order-metadata {
+    display: flex;
+    justify-content: space-between;
+}
+
+.order-status {
+    display: flex;
+    margin: 1%;
+    align-items: center;
+}
+
+.order-status > h2 {
+    margin: 0 0 0 2vmin;
+}
+
+.circle-holder {
+    height: 3vmin;
+    width: 3vmin;
+}
+
+.status-circle {
+    width: 3vmin;
+    height: 3vmin;
+    border-radius: 50%;
+}
+
+.status-circle.Submitted {
+    background-color: orange;
+    animation: pulse 2s infinite;
+}
+.status-circle.Approved {
+    background-color: var(--darkgreen);
+    animation: pulse 2s infinite;
+}
+.status-circle.Delivered {
+    background-color: darkblue;
+}
+
+.order-dates {
+    text-align: right;
+}
+
+.order-dates > p {
+    margin: 0;
+}
+
+@keyframes pulse {
+    0% {
+		transform: scale(0.8);
+    }
+    50% {
+		transform: scale(1);
+    }
+    100% {
+        transform: scale(0.8);
+    }
+  }
+  

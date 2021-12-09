@@ -16,12 +16,12 @@ module.exports = {
 };
 
 async function index(req, res) {
-    const orders = await Order.find({user: req.user._id}).populate('trees').exec();
+    const orders = await Order.find({user: req.user._id}).populate('trees').sort('-createdAt').exec();
     res.json(orders);
 }
 
 async function all(req, res) {
-    const orders = await Order.find({}).populate('trees').populate('user').exec();
+    const orders = await Order.find({}).populate('trees').populate('user').sort('-createdAt').exec();
     res.json(orders);
 }
 

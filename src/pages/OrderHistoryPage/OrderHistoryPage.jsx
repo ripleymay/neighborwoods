@@ -18,10 +18,14 @@ export default function OrderHistoryPage({ user }) {
 
     return (
         <main className="OrderHistoryPage">
-            <h1>Your tree orders</h1>
+            <h1 className="page-title">Your tree orders</h1>
+            <p>Have a question about the status or contents of an order? Give us a call at 512-443-5323
+                or shoot us an email at neighborwoods@treefolks.org.</p>
+            <hr />
             {orders.length ? 
                 <div className="order-scroll">
-                    {orders.map(o => <OrderCard order={o} key={o._id}/>)}
+                    <div className="order-cards">{orders.map(o => <OrderCard order={o} key={o._id}/>)}</div>
+                    <div className="scroll-down"></div>
                 </div>
                 : 
                 <h2>No orders yet</h2>

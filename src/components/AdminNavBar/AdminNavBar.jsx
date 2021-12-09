@@ -12,11 +12,11 @@ export default function NavBar(props) {
   return (
     <aside className="side-nav">
       <h3>Welcome, <br /> <span className="username">{props.user.name}</span></h3>
-      <Link to="orders/all">📂 All Orders</Link>
-      <Link to="users/all">👥 All Users</Link>
-      <Link to="trees/all">🌳 Edit Trees</Link>
-      <Link to="settings">⚙️ Settings</Link>
-      <Link to="" onClick={handleLogOut}>↩️ Log Out</Link>
+      <Link to="orders/all"><span className="emoji">📂 </span>All Orders</Link>
+      <Link to="users/all"><span className="emoji">👥 </span>All Users</Link>
+      <Link to="trees/all"><span className="emoji">🌳 </span>Edit Trees</Link>
+      <Link to="settings"><span className="emoji">⚙️ </span>Settings</Link>
+      <Link to="" onClick={handleLogOut}><span className="emoji">↩️ </span>Log Out</Link>
     </aside>
   );
 }

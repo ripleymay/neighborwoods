@@ -18,7 +18,10 @@ export default function AvailTreesPage() {
 
     return (
         <main className="AvailTreesPage">
-            <h1>Available trees</h1>
+            <h1 className="page-title">Available trees</h1>
+            <p>Tree availability varies throughout the season based on nursery inventory. 
+                We appreciate your understanding and flexibility.</p>
+            <hr />
             <div className="tree-scroll">
                 <div className="tree-cards">{trees.map(t => <TreeCard tree={t} />)}</div>
                 <div className="scroll-down"></div>

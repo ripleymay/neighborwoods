@@ -1,9 +1,26 @@
 .TreeCard {
-    padding: 1vmin;
-    border: .5vmin solid var(--darkgreen);
+    padding: 2vmin;
+    border: .25vmin solid var(--darkgreen);
     background-color: var(--lightgrey);
     margin: 1%;
     width: 48%;
+}
+
+.tree-title {
+    display: flex;
+    justify-content: space-between;
+}
+
+.tree-title h2, .tree-title p {
+    margin: 0;
+}
+
+.tree-title > h2 {
+    font-weight: 500;
+}
+
+.tree-desc {
+    margin: 5% 0 0 0;
 }
 
 .italic {

@@ -3,11 +3,18 @@ export default function OrderCard({order}) {
 
     return (
       <div className="OrderCard">
-          <p>Created on {new Date(order.createdAt).toLocaleDateString()}</p>
-          <p>Last updated on {new Date(order.updatedAt).toLocaleDateString()}</p>
-          <p>Status: {order.status}</p>
-          <p>Trees requested: {order.trees.map(t => <span>{t.name}, </span>)}</p>
-          <p>{order.address}</p>
+        <div className="order-metadata">
+          <div className="order-status">
+            <div className="circle-holder"><div className={`status-circle ${order.status}`}></div></div>
+            <h2>{order.status}</h2>
+          </div>
+          <div className="order-dates">
+            <p>Created on {new Date(order.createdAt).toLocaleDateString()}</p>
+            <p>Last updated on {new Date(order.updatedAt).toLocaleDateString()}</p>
+          </div>
+        </div>
+          <h3><span className="underline">{order.address}</span></h3>
+          <h3>Trees: {order.trees.map((t, idx) => <span>{t.name}{idx + 1 !== order.trees.length && ', '} </span>)}</h3>
       </div>
     );
   }

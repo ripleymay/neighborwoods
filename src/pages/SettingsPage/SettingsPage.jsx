@@ -25,16 +25,16 @@ export default function SettingsPage({ user, setUser}) {
     
     return (
         <main className="SettingsPage">
-            <h1>Your settings</h1>
-
+            <h1 className="page-title">Your settings</h1>
+            <hr />
             { !showForm ? 
-            <div>
+            <div id="user-info">
                 <p>Email: {userInfo.email}</p>
                 <p>Phone: {userInfo.phone}</p>
-                <button onClick={() => setShowForm(true)}>Edit</button>
+                <button className="auth-btn" onClick={() => setShowForm(true)}>Edit</button>
             </div>
             : 
-            <form autoComplete="off" className="settings-form"  onSubmit={handleSubmit}>
+            <form autoComplete="off" className="settings-form auth-form"  onSubmit={handleSubmit}>
                 <label>Name</label>
                 <input type="text" name="name" value={userInfo.name} onChange={handleChange} required />
                 <label>Email</label>

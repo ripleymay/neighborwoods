@@ -14,7 +14,7 @@ async function index(req, res) {
 }
 
 async function all(req, res) {
-    const trees = await Tree.find({});
+    const trees = await Tree.find({}).sort('name').exec();
     res.json(trees);
 }
 

@@ -3,9 +3,18 @@
 }
 
 .order-scroll {
+    position: relative;
+    height: 90%;
+}
+
+.order-cards {
+    position: absolute;
+    top: 0;
+    left: 0;
     display: flex;
     flex-direction: column;
-    height: 90%;
     overflow-y: auto;
-    padding: 2%;
+    height: 100%;
+    width: 100%;
+    padding-bottom: 5%;
 }
